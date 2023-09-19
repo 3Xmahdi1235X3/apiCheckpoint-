@@ -1,38 +1,177 @@
-.App {
-  text-align: center;
+/* CSS variables */
+:root {
+  --base-text-color: #151515;
+  --base-link-color: #1daaff;
+  --base-hover-color: darken(var(--base-link-color), 20);
+  --profile-card-size: 500px;
+  --profile-avatar-size: 150px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html, body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  user-select: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Some styling for display on codepen */
+.codepen {
+  margin: 2em auto;
+}
+
+.codepen h1 {
+  color: lighten(var(--base-text-color), 20);
+  font-weight: 100;
+}
+
+.codepen a {
+  color: var(--base-link-color);
+}
+
+.codepen a:hover {
+  color: var(--base-hover-color);
+}
+
+.profile {
+  max-width: var(--profile-card-size);
+  border: 1px solid lighten(var(--base-text-color), 80);
+  border-radius: 20px;
+  padding: 2em;
+  margin: 1em;
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+.profile figure {
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.profile img {
+  max-width: var(--profile-avatar-size);
+  max-height: var(--profile-avatar-size);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0px 0px 20px rgba(var(--base-text-color), 0.15);
+}
+
+.profile header h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.profile header small {
+  display: block;
+  clear: both;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.profile main {
+  display: none;
+}
+
+.profile main dl {
+  display: block;
+  width: 100%;
+}
+
+.profile main dl dt,
+.profile main dl dd {
+  float: left;
+  padding: 8px 5px;
+  margin: 0;
+  border-bottom: 1px solid lighten(var(--base-text-color), 80);
+}
+
+.profile main dl dt {
+  width: 30%;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.profile main dl dt:after {
+  content: ":";
+}
+
+.profile main dl dd {
+  width: 70%;
+}
+
+.profile .toggle {
+  position: absolute;
+  background: #fff;
+  top: 30px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  text-align: center;
+  z-index: 20;
+  vertical-align: middle;
+  box-shadow: 0px 0px 10px rgba(var(--base-text-color), 0.15);
+  cursor: pointer;
+  border-radius: 20px;
+  user-select: none;
+  transition: box-shadow 300ms ease;
+}
+
+.profile .toggle:hover {
+  box-shadow: 0px 0px 10px rgba(var(--base-text-color), 0.25);
+}
+
+.profile .toggle main {
+  font-size: 16px;
+}
+
+.view_details {
+  position: absolute;
+  top: -5000px;
+  left: -5000px;
+}
+
+label {
+  display: block;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+  .profile {
+    padding: 1em;
+    margin: 1em;
   }
-  to {
-    transform: rotate(360deg);
+
+  .profile img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .profile main dl,
+  .profile main dl dt,
+  .profile main dl dd {
+    display: block;
+    width: 100%;
+    float: none;
+  }
+
+  .profile main dl dt {
+    border-bottom: none;
+  }
+
+  .profile main dl dd {
+    margin-bottom: 10px;
+  }
+
+  .profile .toggle {
+    top: 15px;
+    left: 15px;
   }
 }
